@@ -45,6 +45,11 @@ You may have to restart Eclipse, too in order to have your JSPs validated.
 
 **Note for CLI developpers**
 
+There is absolutely no need for an IDE other than your favorite distro..
+Just start liferay inside the workspace the following way:
+
+`blade server start`
+
 Inside the project module folder, just execute this to build and
 deploy the module into your liferay installation:
 
