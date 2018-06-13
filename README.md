@@ -9,7 +9,7 @@ This is a planning module for Liferay. It is based on https://github.com/inofix/
 1. Install blade: `curl https://raw.githubusercontent.com/liferay/liferay-blade-cli/master/installers/local | sh`
 1. Create a liferay workspace: `WORKSPACE=my-workspace; MODULENAME=ch-inofix-sketch-board; blade init $WORKSPACE`
 1. Checkout timetracker sources to the workspace's module directory: `cd $WORKSPACE/modules; git clone https://github.com/inofix/$MODULENAME.git`
-1. Change working directory to ch-inofix-timetracker: `cd $WORKSPACE/modules/$MODULENAME`
+1. Change working directory: `cd $WORKSPACE/modules/$MODULENAME`
 1. Build: `gradle jar`
  
 ## How To Contribute
@@ -42,6 +42,13 @@ If the JSPs of the sketch-board-web project aren't validated properly,
 - press CTRL + F5 to refresh your project
  
 You may have to restart Eclipse, too in order to have your JSPs validated.
+
+**Note for CLI developpers**
+
+Inside the project module folder, just execute this to build and
+deploy the module into your liferay installation:
+
+`blade deploy`
  
 ## How To Test
  
