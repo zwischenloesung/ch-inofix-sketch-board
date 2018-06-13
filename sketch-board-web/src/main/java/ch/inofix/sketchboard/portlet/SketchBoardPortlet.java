@@ -14,9 +14,12 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=category.sample",
+        "com.liferay.portlet.css-class-wrapper=portlet-sketch-board",
+		"com.liferay.portlet.display-category=category.inofix",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=sketch-board-web Portlet",
+        "com.liferay.portlet.header-portlet-css=/css/main.css",
+        "com.liferay.portlet.scopeable=true",
+		"javax.portlet.display-name=Sketch Board Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=" + SketchBoardPortletKeys.SketchBoard,
