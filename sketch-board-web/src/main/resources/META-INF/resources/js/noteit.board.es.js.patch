@@ -1,0 +1,23 @@
+--- /home/mic/2/ch/inofix/git/note-it-js/lib/noteit.board.es.js	2018-06-14 17:33:06.259765739 +0200
++++ /home/mic/2/ch/inofix/git/ch-inofix-sketch-board/sketch-board-web/src/main/resources/META-INF/resources/js/noteit.board.es.js	2018-06-14 23:31:39.276474967 +0200
+@@ -1,3 +1,4 @@
++import * as d3 from 'd3/dist/d3';
+ 
+-class SketchBoard {
++export class SketchBoard {
+ /**
+@@ -167,3 +168,3 @@
+ 
+-class Adhesive {
++export class Adhesive {
+ 
+@@ -565,3 +566,3 @@
+ 
+-class NoteIt extends Adhesive {
++export class NoteIt extends Adhesive {
+ 
+@@ -737,3 +738,3 @@
+ 
+-class Stack {
++export class Stack {
+ 

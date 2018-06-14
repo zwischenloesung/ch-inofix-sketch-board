@@ -606,9 +606,9 @@ export class NoteIt extends Adhesive {
             n.setFeatures(p.handles, p.draggable, p.type.node().textContent, "Title", "...");
             n.parentObject = p;
             p.childObjects.set(n.id, n);
-            p.showHandleVisible();
             p.board.adhesives.set(n.id, n);
             g.raise();
+            p.showHandleVisible();
         });
     }
 
