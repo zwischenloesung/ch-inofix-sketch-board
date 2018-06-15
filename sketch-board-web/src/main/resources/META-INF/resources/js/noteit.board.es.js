@@ -38,6 +38,11 @@ export class SketchBoard {
 
         // svg group to contain all the adhesives on this board
         this.group = this.svg.append("g").attr("class", "sketchboard");
+//TODO add a slider and some shortcuts too for keyboard fetishists like myself (I have no wheel on my trackpoint)..
+        var g = this.group;
+        this.group.call(d3.zoom().on("zoom", function() {
+            g.attr("transform", "scale(" + d3.event.transform.k + ")");
+        }));
 
         // a map of all adhesives
         this.adhesives = new Map();
@@ -148,9 +153,9 @@ export class SketchBoard {
         } else if (typeof q === 'object') {
             switch (q["class"]) {
                 case "adhesive":
-                    return Adhesive.create(board, adhesiveKey);
+                    return Adhesive.create(this, adhesiveKey);
                 case "noteit":
-                    return NoteIt.create(board, adhesiveKey);
+                    return NoteIt.create(this, adhesiveKey);
                 default:
                     alert("Could not create the '" + adhesiveKey +
                             "' of type '" + q["class"] + "'");
@@ -601,9 +606,9 @@ export class NoteIt extends Adhesive {
             n.setFeatures(p.handles, p.draggable, p.type.node().textContent, "Title", "...");
             n.parentObject = p;
             p.childObjects.set(n.id, n);
-            p.showHandleVisible();
             p.board.adhesives.set(n.id, n);
             g.raise();
+            p.showHandleVisible();
         });
     }
 
