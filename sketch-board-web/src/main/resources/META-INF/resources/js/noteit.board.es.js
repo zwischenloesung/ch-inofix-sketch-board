@@ -153,9 +153,9 @@ export class SketchBoard {
         } else if (typeof q === 'object') {
             switch (q["class"]) {
                 case "adhesive":
-                    return Adhesive.create(board, adhesiveKey);
+                    return Adhesive.create(this, adhesiveKey);
                 case "noteit":
-                    return NoteIt.create(board, adhesiveKey);
+                    return NoteIt.create(this, adhesiveKey);
                 default:
                     alert("Could not create the '" + adhesiveKey +
                             "' of type '" + q["class"] + "'");
