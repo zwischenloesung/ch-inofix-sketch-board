@@ -33,8 +33,9 @@ export default function(portletNamespace, json) {
 
         var curOutputJSON = false;
         let switchButtonDiv = d3.select(`#${portletNamespace}-button`);
-        var switchButton = switchButtonDiv.append("input")
-                    .attr("type", "button").attr("value", "JSON")
+        var switchButton = switchButtonDiv.append("button")
+                    .attr("class", "btn btn-default")
+                    .attr("type", "button").text("JSON")
                     .on("click", function() {
             curOutputJSON = !curOutputJSON;
 
@@ -44,7 +45,7 @@ export default function(portletNamespace, json) {
                 storeDiv.style("height", "100%");
                 boardDiv.style("visibility", "hidden");
 //                boardDiv.style("height", "0%");
-                switchButton.attr("value", "SVG");
+                switchButton.text("SVG");
 //                store.text(board.toJSON("  "));
                 createTextarea(board.toJSON("  "));
                 board.group.remove();
@@ -55,7 +56,7 @@ export default function(portletNamespace, json) {
                 storeDiv.style("height", "0%");
                 boardDiv.style("visibility", "visible");
 //                boardDiv.style("height", "100%");
-                switchButton.attr("value", "JSON");
+                switchButton.text("JSON");
                 createBoard(store.node().value);
                 store.remove();
             }
