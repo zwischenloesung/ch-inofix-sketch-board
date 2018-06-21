@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder
+    PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN"
+    "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+<!--
+    service.xml: Model and service description of the INOFIX' NoteIt!
+
+    Created:    2018-06-21 by Michael Lustenberger
+    Modified:   2018-06-21 by Michael Lustenberger
+    Version:    1.0
+-->
+
+<service-builder package-path="ch.inofix.sketchboard">
+	<namespace>inofix_sketchboard</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity local-service="true" name="SketchBoard"
+            remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="sketchBoardId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+        <column name="status" type="int" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="configuration" type="String" />
+		<column name="setup" type="String" />
+
+		<!-- Order -->
+
+		<order by="desc">
+			<order-column name="modifiedDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="Name" return-type="Collection">
+			<finder-column name="name" />
+		</finder>
+
+		<!-- References -->
+
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+	</entity>
+
+    <exceptions>
+        <exception>SketchBoardConfiguration</exception>
+        <exception>SketchBoardSetup</exception>
+    </exceptions>
+</service-builder>
