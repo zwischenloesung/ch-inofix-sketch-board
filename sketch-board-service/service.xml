@@ -11,7 +11,7 @@
 -->
 
 <service-builder package-path="ch.inofix.sketchboard">
-	<namespace>inofix_sketchboard</namespace>
+	<namespace>inofix_sb</namespace>
 	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
 	<entity local-service="true" name="SketchBoard"
             remote-service="true" uuid="true">
@@ -31,7 +31,13 @@
 		<column name="userName" type="String" />
 		<column name="createDate" type="Date" />
 		<column name="modifiedDate" type="Date" />
+
+        <!-- Status fields -->
+
         <column name="status" type="int" />
+        <column name="statusByUserId" type="long" />
+        <column name="statusByUserName" type="String" />
+        <column name="statusDate" type="Date" />
 
 		<!-- Other fields -->
 
@@ -47,9 +53,9 @@
 
 		<!-- Finder methods -->
 
-		<finder name="Name" return-type="Collection">
-			<finder-column name="name" />
-		</finder>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
 
 		<!-- References -->
 
