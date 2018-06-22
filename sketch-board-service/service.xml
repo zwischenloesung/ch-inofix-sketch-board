@@ -42,6 +42,7 @@
 		<!-- Other fields -->
 
 		<column name="name" type="String" />
+        <column name="description" type="String" />
 		<column name="configuration" type="String" />
 		<column name="setup" type="String" />
 

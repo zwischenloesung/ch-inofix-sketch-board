@@ -73,6 +73,7 @@ public class SketchBoardWrapper implements SketchBoard,
 		attributes.put("statusByUserName", getStatusByUserName());
 		attributes.put("statusDate", getStatusDate());
 		attributes.put("name", getName());
+		attributes.put("description", getDescription());
 		attributes.put("configuration", getConfiguration());
 		attributes.put("setup", getSetup());
 
@@ -159,6 +160,12 @@ public class SketchBoardWrapper implements SketchBoard,
 			setName(name);
 		}
 
+		String description = (String)attributes.get("description");
+
+		if (description != null) {
+			setDescription(description);
+		}
+
 		String configuration = (String)attributes.get("configuration");
 
 		if (configuration != null) {
@@ -210,6 +217,16 @@ public class SketchBoardWrapper implements SketchBoard,
 	@Override
 	public Date getCreateDate() {
 		return _sketchBoard.getCreateDate();
+	}
+
+	/**
+	* Returns the description of this sketch board.
+	*
+	* @return the description of this sketch board
+	*/
+	@Override
+	public java.lang.String getDescription() {
+		return _sketchBoard.getDescription();
 	}
 
 	@Override
@@ -510,6 +527,16 @@ public class SketchBoardWrapper implements SketchBoard,
 	@Override
 	public void setCreateDate(Date createDate) {
 		_sketchBoard.setCreateDate(createDate);
+	}
+
+	/**
+	* Sets the description of this sketch board.
+	*
+	* @param description the description of this sketch board
+	*/
+	@Override
+	public void setDescription(java.lang.String description) {
+		_sketchBoard.setDescription(description);
 	}
 
 	@Override

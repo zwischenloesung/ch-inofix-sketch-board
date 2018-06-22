@@ -47,6 +47,7 @@ public class SketchBoardSoap implements Serializable {
 		soapModel.setStatusByUserName(model.getStatusByUserName());
 		soapModel.setStatusDate(model.getStatusDate());
 		soapModel.setName(model.getName());
+		soapModel.setDescription(model.getDescription());
 		soapModel.setConfiguration(model.getConfiguration());
 		soapModel.setSetup(model.getSetup());
 
@@ -205,6 +206,14 @@ public class SketchBoardSoap implements Serializable {
 		_name = name;
 	}
 
+	public String getDescription() {
+		return _description;
+	}
+
+	public void setDescription(String description) {
+		_description = description;
+	}
+
 	public String getConfiguration() {
 		return _configuration;
 	}
@@ -234,6 +243,7 @@ public class SketchBoardSoap implements Serializable {
 	private String _statusByUserName;
 	private Date _statusDate;
 	private String _name;
+	private String _description;
 	private String _configuration;
 	private String _setup;
 }

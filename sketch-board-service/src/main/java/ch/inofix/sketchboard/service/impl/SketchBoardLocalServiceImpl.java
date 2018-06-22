@@ -15,11 +15,21 @@
 package ch.inofix.sketchboard.service.impl;
 
 import ch.inofix.sketchboard.service.base.SketchBoardLocalServiceBaseImpl;
+import ch.inofix.sketchboard.exception.SketchBoardNameException;
+import ch.inofix.sketchboard.exception.SketchBoardConfigurationException;
+import ch.inofix.sketchboard.exception.SketchBoardSetupException;
+import ch.inofix.sketchboard.model.SketchBoard;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
 
 import java.util.Date;
+import java.util.List;
+
 
 /**
  * The implementation of the sketch board local service.

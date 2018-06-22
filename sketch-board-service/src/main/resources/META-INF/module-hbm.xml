@@ -19,6 +19,7 @@
 		<property name="statusByUserName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="statusDate" type="org.hibernate.type.TimestampType" />
 		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="configuration" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="setup" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>

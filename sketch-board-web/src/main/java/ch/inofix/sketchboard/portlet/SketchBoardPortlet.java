@@ -9,7 +9,10 @@ import javax.portlet.Portlet;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * @author mic
+ * @author Michael Lustenberger
+ * @created 2018-06-01
+ * @modified 2018-06-22
+ * @version 1.0.0
  */
 @Component(
 	immediate = true,

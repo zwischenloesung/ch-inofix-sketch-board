@@ -308,6 +308,21 @@ public interface SketchBoardModel extends BaseModel<SketchBoard>, GroupedModel,
 	public void setName(String name);
 
 	/**
+	 * Returns the description of this sketch board.
+	 *
+	 * @return the description of this sketch board
+	 */
+	@AutoEscape
+	public String getDescription();
+
+	/**
+	 * Sets the description of this sketch board.
+	 *
+	 * @param description the description of this sketch board
+	 */
+	public void setDescription(String description);
+
+	/**
 	 * Returns the configuration of this sketch board.
 	 *
 	 * @return the configuration of this sketch board
