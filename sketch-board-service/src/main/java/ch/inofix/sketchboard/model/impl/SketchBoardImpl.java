@@ -17,20 +17,29 @@ package ch.inofix.sketchboard.model.impl;
 import aQute.bnd.annotation.ProviderType;
 
 /**
- * The extended model implementation for the SketchBoard service. Represents a row in the &quot;inofix_sb_SketchBoard&quot; database table, with each column mapped to a property of this class.
+ * The extended model implementation for the SketchBoard service. Represents
+ * a row in the &quot;inofix_sb_SketchBoard&quot; database table, with each
+ * column mapped to a property of this class.
  *
  * <p>
- * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link ch.inofix.sketchboard.model.SketchBoard} interface.
+ * Helper methods and all application logic should be put in this class.
+ * Whenever methods are added, rerun ServiceBuilder to copy their definitions
+ * into the {@link ch.inofix.sketchboard.model.SketchBoard} interface.
  * </p>
  *
- * @author Brian Wing Shun Chan
+ * @author Michael Lustenberger
+ * @created 2018-06-22
+ * @modified 2018-06-22
+ * @version 1.0
  */
 @ProviderType
 public class SketchBoardImpl extends SketchBoardBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. All methods that expect a sketch board model instance should use the {@link ch.inofix.sketchboard.model.SketchBoard} interface instead.
+	 * Never reference this class directly. All methods that expect a sketch
+	 * board model instance should use the {@link
+	 * ch.inofix.sketchboard.model.SketchBoard} interface instead.
 	 */
 	public SketchBoardImpl() {
 	}

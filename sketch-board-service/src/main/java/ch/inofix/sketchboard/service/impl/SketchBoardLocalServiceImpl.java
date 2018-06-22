@@ -20,13 +20,20 @@ import ch.inofix.sketchboard.service.base.SketchBoardLocalServiceBaseImpl;
  * The implementation of the sketch board local service.
  *
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link ch.inofix.sketchboard.service.SketchBoardLocalService} interface.
+ * All custom service methods should be put in this class. Whenever methods are
+ * added, rerun ServiceBuilder to copy their definitions into the
+ * {@link ch.inofix.sketchboard.service.SketchBoardLocalService} interface.
  *
  * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
+ * This is a local service. Methods of this service will not have security checks
+ * based on the propagated JAAS credentials because this service can only be
+ * accessed from within the same VM.
  * </p>
  *
- * @author Brian Wing Shun Chan
+ * @author Michael Lustenberger
+ * @created 2018-06-22
+ * @modified 2018-06-22
+ * @version 1.0.0
  * @see SketchBoardLocalServiceBaseImpl
  * @see ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil
  */
@@ -34,6 +41,8 @@ public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. Always use {@link ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil} to access the sketch board local service.
+	 * Never reference this class directly. Always use
+	 * {@link ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil} to access
+	 * the sketch board local service.
 	 */
 }
