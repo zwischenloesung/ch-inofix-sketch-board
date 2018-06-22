@@ -61,7 +61,7 @@ public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl
 
         Date now = new Date();
 
-        validate(name);
+        validate(name, configuration, setup);
 
         long sketchBoardId = counterLocalService.increment();
 
@@ -75,12 +75,48 @@ public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl
         sketchBoard.setCreateDate(serviceContext.getCreateDate(now));
         sketchBoard.setModifiedDate(serviceContext.getModifiedDate(now));
         sketchBoard.setName(name);
-        sketchBoard.setName(description);
-        sketchBoard.setName(configuration);
-        sketchBoard.setName(setup);
+        sketchBoard.setDescription(description);
+        sketchBoard.setConfiguration(configuration);
+        sketchBoard.setSetup(setup);
 //        sketchBoard.setExpandoBridgeAttributes(serviceContext);
 
         sketchBoardPersistence.update(sketchBoard);
+
+        return sketchBoard;
+    }
+
+    public SketchBoard updateSketchBoard (
+        long userId, long sketchBoardId, String name, String description,
+        String configuration, String setup, ServiceContext serviceContext)
+        throws PortalException, SystemException {
+
+        Date now = new Date();
+
+        validate(name, configuration, setup);
+
+        SketchBoard sketchBoard = getSketchBoard(sketchBoardId);
+
+        User user = userLocalService.getUserById(userId);
+
+        sketchBoard.setUserId(userId);
+        sketchBoard.setUserName(user.getFullName());
+        sketchBoard.setModifiedDate(serviceContext.getModifiedDate(now));
+        sketchBoard.setName(name);
+        sketchBoard.setDescription(description);
+        sketchBoard.setConfiguration(configuration);
+        sketchBoard.setSetup(setup);
+
+        sketchBoardPersistence.update(sketchBoard);
+
+        return sketchBoard;
+    }
+
+    public SketchBoard deleteSketchBoard (long sketchBoardId, ServiceContext serviceContext)
+        throws PortalException {
+
+        SketchBoard sketchBoard = getSketchBoard(sketchBoardId);
+
+        sketchBoard = deleteSketchBoard(sketchBoardId);
 
         return sketchBoard;
     }
@@ -106,19 +142,14 @@ public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl
         return sketchBoardPersistence.countByGroupId(groupId);
     }
 
-    protected void validate(String name) throws PortalException {
+    protected void validate(String name, String configuration, String setup)
+            throws PortalException {
         if (Validator.isNull(name)) {
             throw new SketchBoardNameException();
         }
-    }
-
-    protected void validate(String name) throws PortalException {
         if (Validator.isNull(name)) {
             throw new SketchBoardConfigurationException();
         }
-    }
-
-    protected void validate(String name) throws PortalException {
         if (Validator.isNull(name)) {
             throw new SketchBoardSetupException();
         }

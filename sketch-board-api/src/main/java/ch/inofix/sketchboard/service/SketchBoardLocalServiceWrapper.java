@@ -91,6 +91,15 @@ public class SketchBoardLocalServiceWrapper implements SketchBoardLocalService,
 		return _sketchBoardLocalService.deleteSketchBoard(sketchBoardId);
 	}
 
+	@Override
+	public ch.inofix.sketchboard.model.SketchBoard deleteSketchBoard(
+		long sketchBoardId,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _sketchBoardLocalService.deleteSketchBoard(sketchBoardId,
+			serviceContext);
+	}
+
 	/**
 	* Deletes the sketch board from the database. Also notifies the appropriate model listeners.
 	*
@@ -352,6 +361,19 @@ public class SketchBoardLocalServiceWrapper implements SketchBoardLocalService,
 	@Override
 	public int getSketchBoardsCount(long groupId) {
 		return _sketchBoardLocalService.getSketchBoardsCount(groupId);
+	}
+
+	@Override
+	public ch.inofix.sketchboard.model.SketchBoard updateSketchBoard(
+		long userId, long sketchBoardId, java.lang.String name,
+		java.lang.String description, java.lang.String configuration,
+		java.lang.String setup,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _sketchBoardLocalService.updateSketchBoard(userId,
+			sketchBoardId, name, description, configuration, setup,
+			serviceContext);
 	}
 
 	/**

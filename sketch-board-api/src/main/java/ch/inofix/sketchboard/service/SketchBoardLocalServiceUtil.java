@@ -95,6 +95,13 @@ public class SketchBoardLocalServiceUtil {
 		return getService().deleteSketchBoard(sketchBoardId);
 	}
 
+	public static ch.inofix.sketchboard.model.SketchBoard deleteSketchBoard(
+		long sketchBoardId,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().deleteSketchBoard(sketchBoardId, serviceContext);
+	}
+
 	/**
 	* Deletes the sketch board from the database. Also notifies the appropriate model listeners.
 	*
@@ -329,6 +336,18 @@ public class SketchBoardLocalServiceUtil {
 
 	public static int getSketchBoardsCount(long groupId) {
 		return getService().getSketchBoardsCount(groupId);
+	}
+
+	public static ch.inofix.sketchboard.model.SketchBoard updateSketchBoard(
+		long userId, long sketchBoardId, java.lang.String name,
+		java.lang.String description, java.lang.String configuration,
+		java.lang.String setup,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateSketchBoard(userId, sketchBoardId, name, description,
+			configuration, setup, serviceContext);
 	}
 
 	/**

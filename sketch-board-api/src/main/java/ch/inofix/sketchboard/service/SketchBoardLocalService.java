@@ -104,6 +104,9 @@ public interface SketchBoardLocalService extends BaseLocalService,
 	public SketchBoard deleteSketchBoard(long sketchBoardId)
 		throws PortalException;
 
+	public SketchBoard deleteSketchBoard(long sketchBoardId,
+		ServiceContext serviceContext) throws PortalException;
+
 	/**
 	* Deletes the sketch board from the database. Also notifies the appropriate model listeners.
 	*
@@ -291,6 +294,11 @@ public interface SketchBoardLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getSketchBoardsCount(long groupId);
+
+	public SketchBoard updateSketchBoard(long userId, long sketchBoardId,
+		java.lang.String name, java.lang.String description,
+		java.lang.String configuration, java.lang.String setup,
+		ServiceContext serviceContext) throws PortalException, SystemException;
 
 	/**
 	* Updates the sketch board in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
