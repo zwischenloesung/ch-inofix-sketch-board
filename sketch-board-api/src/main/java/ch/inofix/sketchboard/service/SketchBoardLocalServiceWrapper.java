@@ -33,6 +33,16 @@ public class SketchBoardLocalServiceWrapper implements SketchBoardLocalService,
 		_sketchBoardLocalService = sketchBoardLocalService;
 	}
 
+	@Override
+	public ch.inofix.sketchboard.model.SketchBoard addSketchBoard(long userId,
+		java.lang.String name, java.lang.String description,
+		java.lang.String configuration, java.lang.String setup,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _sketchBoardLocalService.addSketchBoard(userId, name,
+			description, configuration, setup, serviceContext);
+	}
+
 	/**
 	* Adds the sketch board to the database. Also notifies the appropriate model listeners.
 	*
@@ -278,6 +288,25 @@ public class SketchBoardLocalServiceWrapper implements SketchBoardLocalService,
 		return _sketchBoardLocalService.getSketchBoards(start, end);
 	}
 
+	@Override
+	public java.util.List<ch.inofix.sketchboard.model.SketchBoard> getSketchBoards(
+		long groupId) {
+		return _sketchBoardLocalService.getSketchBoards(groupId);
+	}
+
+	@Override
+	public java.util.List<ch.inofix.sketchboard.model.SketchBoard> getSketchBoards(
+		long groupId, int start, int end) {
+		return _sketchBoardLocalService.getSketchBoards(groupId, start, end);
+	}
+
+	@Override
+	public java.util.List<ch.inofix.sketchboard.model.SketchBoard> getSketchBoards(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<ch.inofix.sketchboard.model.SketchBoard> obc) {
+		return _sketchBoardLocalService.getSketchBoards(groupId, start, end, obc);
+	}
+
 	/**
 	* Returns all the sketch boards matching the UUID and company.
 	*
@@ -318,6 +347,11 @@ public class SketchBoardLocalServiceWrapper implements SketchBoardLocalService,
 	@Override
 	public int getSketchBoardsCount() {
 		return _sketchBoardLocalService.getSketchBoardsCount();
+	}
+
+	@Override
+	public int getSketchBoardsCount(long groupId) {
+		return _sketchBoardLocalService.getSketchBoardsCount(groupId);
 	}
 
 	/**

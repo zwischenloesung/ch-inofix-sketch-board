@@ -15,6 +15,11 @@
 package ch.inofix.sketchboard.service.impl;
 
 import ch.inofix.sketchboard.service.base.SketchBoardLocalServiceBaseImpl;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.Validator;
+
+import java.util.Date;
 
 /**
  * The implementation of the sketch board local service.
@@ -38,11 +43,84 @@ import ch.inofix.sketchboard.service.base.SketchBoardLocalServiceBaseImpl;
  * @see ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil
  */
 public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use
-	 * {@link ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil} to access
-	 * the sketch board local service.
-	 */
+    /*
+     * NOTE FOR DEVELOPERS:
+     *
+     * Never reference this class directly. Always use
+     * {@link ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil} to access
+     * the sketch board local service.
+     */
+
+    public SketchBoard addSketchBoard(long userId, String name, String description,
+            String configuration, String setup, ServiceContext serviceContext)
+            throws PortalException {
+
+        long groupId = serviceContext.getScopeGroupId();
+
+        User user = userLocalService.getUserById(userId);
+
+        Date now = new Date();
+
+        validate(name);
+
+        long sketchBoardId = counterLocalService.increment();
+
+        SketchBoard sketchBoard = sketchBoardPersistence.create(sketchBoardId);
+
+        sketchBoard.setUuid(serviceContext.getUuid());
+        sketchBoard.setUserId(userId);
+        sketchBoard.setGroupId(groupId);
+        sketchBoard.setCompanyId(user.getCompanyId());
+        sketchBoard.setUserName(user.getFullName());
+        sketchBoard.setCreateDate(serviceContext.getCreateDate(now));
+        sketchBoard.setModifiedDate(serviceContext.getModifiedDate(now));
+        sketchBoard.setName(name);
+        sketchBoard.setName(description);
+        sketchBoard.setName(configuration);
+        sketchBoard.setName(setup);
+//        sketchBoard.setExpandoBridgeAttributes(serviceContext);
+
+        sketchBoardPersistence.update(sketchBoard);
+
+        return sketchBoard;
+    }
+
+    public List<SketchBoard> getSketchBoards(long groupId) {
+
+        return sketchBoardPersistence.findByGroupId(groupId);
+    }
+
+    public List<SketchBoard> getSketchBoards(long groupId, int start, int end,
+        OrderByComparator<SketchBoard> obc) {
+
+        return sketchBoardPersistence.findByGroupId(groupId, start, end, obc);
+    }
+
+    public List<SketchBoard> getSketchBoards(long groupId, int start, int end) {
+
+        return sketchBoardPersistence.findByGroupId(groupId, start, end);
+    }
+
+    public int getSketchBoardsCount(long groupId) {
+
+        return sketchBoardPersistence.countByGroupId(groupId);
+    }
+
+    protected void validate(String name) throws PortalException {
+        if (Validator.isNull(name)) {
+            throw new SketchBoardNameException();
+        }
+    }
+
+    protected void validate(String name) throws PortalException {
+        if (Validator.isNull(name)) {
+            throw new SketchBoardConfigurationException();
+        }
+    }
+
+    protected void validate(String name) throws PortalException {
+        if (Validator.isNull(name)) {
+            throw new SketchBoardSetupException();
+        }
+    }
 }

@@ -32,6 +32,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -63,6 +64,10 @@ public interface SketchBoardLocalService extends BaseLocalService,
 	 *
 	 * Never modify or reference this interface directly. Always use {@link SketchBoardLocalServiceUtil} to access the sketch board local service. Add custom service methods to {@link ch.inofix.sketchboard.service.impl.SketchBoardLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public SketchBoard addSketchBoard(long userId, java.lang.String name,
+		java.lang.String description, java.lang.String configuration,
+		java.lang.String setup, ServiceContext serviceContext)
+		throws PortalException;
 
 	/**
 	* Adds the sketch board to the database. Also notifies the appropriate model listeners.
@@ -240,6 +245,16 @@ public interface SketchBoardLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<SketchBoard> getSketchBoards(int start, int end);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<SketchBoard> getSketchBoards(long groupId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<SketchBoard> getSketchBoards(long groupId, int start, int end);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<SketchBoard> getSketchBoards(long groupId, int start, int end,
+		OrderByComparator<SketchBoard> obc);
+
 	/**
 	* Returns all the sketch boards matching the UUID and company.
 	*
@@ -273,6 +288,9 @@ public interface SketchBoardLocalService extends BaseLocalService,
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getSketchBoardsCount();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getSketchBoardsCount(long groupId);
 
 	/**
 	* Updates the sketch board in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

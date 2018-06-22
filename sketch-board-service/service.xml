@@ -64,6 +64,7 @@
 	</entity>
 
     <exceptions>
+        <exception>SketchBoardName</exception>
         <exception>SketchBoardConfiguration</exception>
         <exception>SketchBoardSetup</exception>
     </exceptions>
