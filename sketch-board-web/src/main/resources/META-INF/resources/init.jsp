@@ -8,6 +8,7 @@
 
 <%@ page import="ch.inofix.sketchboard.configuration.SketchBoardConfiguration" %>
 
+<%@ page import="com.liferay.portal.kernel.language.LanguageUtil" %>
 <%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
 
 <%@ page import="com.liferay.portal.kernel.portlet.PortalPreferences" %>
