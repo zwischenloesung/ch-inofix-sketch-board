@@ -37,7 +37,9 @@ export default function(portletNamespace, json, buttonSwitchTo) {
                 boardDiv.style("visibility", "hidden");
                 boardDiv.style("height", "0px");
                 switchButton.text(buttonSwitchTo[1]);
-                store.attr("value", board.toJSON("  "));
+                let t = board.toJSON("  ");
+                store.attr("value", t);
+                store.text(t);
                 board.group.remove();
                 board = null;
             } else {

@@ -40,7 +40,7 @@
                 <aui:input name="name"></aui:input>
                 <aui:input name="description"></aui:input>
                 <aui:input name="configuration"></aui:input>
-                <aui:input id="-json" name="setup">
+                <aui:input id="-json" name="setup" type="textarea">
                 </aui:input>
             </aui:fieldset>
             <aui:button-row>
