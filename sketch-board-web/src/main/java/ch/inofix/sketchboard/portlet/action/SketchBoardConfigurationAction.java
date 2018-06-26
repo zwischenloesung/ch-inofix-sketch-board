@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
+import javax.portlet.PortletPreferences;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,19 +35,22 @@ import ch.inofix.sketchboard.configuration.SketchBoardConfiguration;
     configurationPid = "ch.inofix.sketchboard.configuration.SketchBoardConfiguration",
     configurationPolicy = ConfigurationPolicy.OPTIONAL,
     immediate = true,
-    property = {"javax.portlet.name=" + PortletKeys.SKETCH_BOARD },
+    property = {"javax.portlet.name=" + PortletKeys.SKETCH_BOARD},
     service = ConfigurationAction.class
 )
 
 public class SketchBoardConfigurationAction extends DefaultConfigurationAction {
 
     @Override
-    public void processAction(PortletConfig portletConfig, ActionRequest actionRequest, ActionResponse actionResponse)
-            throws Exception {
+    public void processAction(PortletConfig portletConfig, ActionRequest
+            actionRequest, ActionResponse actionResponse) throws Exception {
 
-        String startup = ParamUtil.getString(actionRequest, "startup");
+        Long sketchBoardId = ParamUtil.getLong(actionRequest, "sketchBoardId");
 
-        setPreference(actionRequest, "startup", startup);
+// Does not work..        setPreference(actionRequest, "sketchBoardId", "22");
+        PortletPreferences preferences = actionRequest.getPreferences();
+        preferences.setValue("sketchBoardId", String.valueOf(sketchBoardId));
+        preferences.store();
 
         super.processAction(portletConfig, actionRequest, actionResponse);
     }
@@ -71,3 +75,4 @@ public class SketchBoardConfigurationAction extends DefaultConfigurationAction {
 
     private volatile SketchBoardConfiguration _sketchBoardConfiguration;
 }
+

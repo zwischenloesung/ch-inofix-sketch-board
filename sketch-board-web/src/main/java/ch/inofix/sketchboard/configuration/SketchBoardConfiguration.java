@@ -14,6 +14,7 @@ import aQute.bnd.annotation.metatype.Meta;
 )
 public interface SketchBoardConfiguration {
 
-    @Meta.AD(deflt = "show-list", required = false)
-    public String startup();
+    @Meta.AD(deflt = "0", required = false)
+    public long sketchBoardId();
 }
+

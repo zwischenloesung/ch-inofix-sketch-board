@@ -1,3 +1,11 @@
+<%--
+    init.jsp
+
+    Created:    2018-06-16 by Michael Lustenberger
+    Modified:   2018-06-26 by Michael Lustenberger
+    Version:    1.0.0
+--%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 
@@ -7,6 +15,7 @@
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%@ page import="ch.inofix.sketchboard.configuration.SketchBoardConfiguration" %>
+<%@ page import="ch.inofix.sketchboard.model.SketchBoard" %>
 
 <%@ page import="com.liferay.portal.kernel.language.LanguageUtil" %>
 <%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
@@ -23,13 +32,20 @@
 <portlet:defineObjects />
 
 <%
-    PortalPreferences portalPreferences = PortletPreferencesFactoryUtil.getPortalPreferences(request);
+    PortalPreferences portalPreferences = PortletPreferencesFactoryUtil
+                                    .getPortalPreferences(request);
 
-    SketchBoardConfiguration sketchBoardConfiguration = (SketchBoardConfiguration) request
-            .getAttribute(SketchBoardConfiguration.class.getName());
+    long sketchBoardId = GetterUtil.getLong(portletPreferences
+                            .getValue("sketchBoardId", "0"));
 
-    String startup = "";
+    SketchBoardConfiguration sketchBoardConfiguration =
+            (SketchBoardConfiguration) request.getAttribute(
+                SketchBoardConfiguration.class.getName());
+
     if (Validator.isNotNull(sketchBoardConfiguration)) {
-        startup = GetterUtil.getString(portletPreferences.getValue("startup", "show-list"));
+        sketchBoardId = GetterUtil.getLong(portletPreferences.getValue(
+                "sketchBoardId", String.valueOf(sketchBoardConfiguration
+                                                .sketchBoardId())));
     }
 %>
+
