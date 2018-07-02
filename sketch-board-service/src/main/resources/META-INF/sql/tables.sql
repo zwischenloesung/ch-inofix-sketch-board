@@ -13,6 +13,6 @@ create table inofix_sb_SketchBoard (
 	statusDate DATE null,
 	name VARCHAR(75) null,
 	description VARCHAR(75) null,
-	configuration VARCHAR(75) null,
-	setup VARCHAR(75) null
+	configuration TEXT null,
+	setup TEXT null
 );
