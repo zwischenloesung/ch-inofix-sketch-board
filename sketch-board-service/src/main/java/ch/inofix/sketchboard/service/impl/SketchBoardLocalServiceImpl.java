@@ -30,7 +30,6 @@ import com.liferay.portal.kernel.util.Validator;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The implementation of the sketch board local service.
  *
@@ -40,9 +39,9 @@ import java.util.List;
  * {@link ch.inofix.sketchboard.service.SketchBoardLocalService} interface.
  *
  * <p>
- * This is a local service. Methods of this service will not have security checks
- * based on the propagated JAAS credentials because this service can only be
- * accessed from within the same VM.
+ * This is a local service. Methods of this service will not have security
+ * checks based on the propagated JAAS credentials because this service can
+ * only be accessed from within the same VM.
  * </p>
  *
  * @author Michael Lustenberger
@@ -52,18 +51,18 @@ import java.util.List;
  * @see SketchBoardLocalServiceBaseImpl
  * @see ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil
  */
-public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl {
+public class SketchBoardLocalServiceImpl
+                extends SketchBoardLocalServiceBaseImpl {
     /*
      * NOTE FOR DEVELOPERS:
      *
      * Never reference this class directly. Always use
-     * {@link ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil} to access
-     * the sketch board local service.
+     * {@link ch.inofix.sketchboard.service.SketchBoardLocalServiceUtil} to
+     * access the sketch board local service.
      */
-
-    public SketchBoard addSketchBoard(long userId, String name, String description,
-            String configuration, String setup, ServiceContext serviceContext)
-            throws PortalException {
+    public SketchBoard addSketchBoard(long userId, String name,
+            String description, String configuration, String setup,
+            ServiceContext serviceContext) throws PortalException {
 
         long groupId = serviceContext.getScopeGroupId();
 
@@ -121,8 +120,8 @@ public class SketchBoardLocalServiceImpl extends SketchBoardLocalServiceBaseImpl
         return sketchBoard;
     }
 
-    public SketchBoard deleteSketchBoard (long sketchBoardId, ServiceContext serviceContext)
-        throws PortalException {
+    public SketchBoard deleteSketchBoard (long sketchBoardId,
+            ServiceContext serviceContext) throws PortalException {
 
         SketchBoard sketchBoard = getSketchBoard(sketchBoardId);
 

@@ -41,6 +41,22 @@ public class SketchBoardServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to {@link ch.inofix.sketchboard.service.impl.SketchBoardServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static ch.inofix.sketchboard.model.SketchBoard addSketchBoard(
+		long userId, java.lang.String name, java.lang.String description,
+		java.lang.String configuration, java.lang.String setup,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService()
+				   .addSketchBoard(userId, name, description, configuration,
+			setup, serviceContext);
+	}
+
+	public static ch.inofix.sketchboard.model.SketchBoard deleteSketchBoard(
+		long sketchBoardId,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().deleteSketchBoard(sketchBoardId, serviceContext);
+	}
 
 	/**
 	* Returns the OSGi service identifier.
@@ -49,6 +65,39 @@ public class SketchBoardServiceUtil {
 	*/
 	public static java.lang.String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static ch.inofix.sketchboard.model.SketchBoard getSketchBoard(
+		long sketchBoardId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getSketchBoard(sketchBoardId);
+	}
+
+	public static java.util.List<ch.inofix.sketchboard.model.SketchBoard> getSketchBoards(
+		long groupId, int start, int end) {
+		return getService().getSketchBoards(groupId, start, end);
+	}
+
+	public static java.util.List<ch.inofix.sketchboard.model.SketchBoard> getSketchBoards(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<ch.inofix.sketchboard.model.SketchBoard> obc) {
+		return getService().getSketchBoards(groupId, start, end, obc);
+	}
+
+	public static int getSketchBoardsCount(long groupId) {
+		return getService().getSketchBoardsCount(groupId);
+	}
+
+	public static ch.inofix.sketchboard.model.SketchBoard updateSketchBoard(
+		long userId, long sketchBoardId, java.lang.String name,
+		java.lang.String description, java.lang.String configuration,
+		java.lang.String setup,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateSketchBoard(userId, sketchBoardId, name, description,
+			configuration, setup, serviceContext);
 	}
 
 	public static SketchBoardService getService() {

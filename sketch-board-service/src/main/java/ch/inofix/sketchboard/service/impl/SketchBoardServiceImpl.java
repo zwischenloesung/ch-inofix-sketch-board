@@ -14,6 +14,14 @@
 
 package ch.inofix.sketchboard.service.impl;
 
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.OrderByComparator;
+
+import ch.inofix.sketchboard.model.SketchBoard;
 import ch.inofix.sketchboard.service.base.SketchBoardServiceBaseImpl;
 
 /**
@@ -45,4 +53,52 @@ public class SketchBoardServiceImpl extends SketchBoardServiceBaseImpl {
 	 * {@link ch.inofix.sketchboard.service.SketchBoardServiceUtil} to access the
 	 * sketch board remote service.
 	 */
+    public SketchBoard addSketchBoard(long userId, String name,
+            String description, String configuration, String setup,
+            ServiceContext serviceContext) throws PortalException {
+
+        return sketchBoardLocalService.addSketchBoard(
+            userId, name, description, configuration, setup, serviceContext);
+    }
+
+    public SketchBoard updateSketchBoard(long userId, long sketchBoardId,
+            String name, String description, String configuration,
+            String setup, ServiceContext serviceContext)
+            throws PortalException, SystemException {
+
+        return sketchBoardLocalService.updateSketchBoard(
+            userId, sketchBoardId, name, description, configuration,
+            setup, serviceContext);
+    }
+
+    public SketchBoard deleteSketchBoard(long sketchBoardId,
+            ServiceContext serviceContext) throws PortalException {
+
+        return sketchBoardLocalService.deleteSketchBoard(sketchBoardId,
+                serviceContext);
+    }
+
+    public SketchBoard getSketchBoard(long sketchBoardId)
+                                            throws PortalException {
+
+        return sketchBoardLocalService.getSketchBoard(sketchBoardId);
+    }
+
+    public List<SketchBoard> getSketchBoards(long groupId, int start,
+                        int end, OrderByComparator<SketchBoard> obc) {
+
+        return sketchBoardLocalService.getSketchBoards(groupId, start,
+                                                        end, obc);
+    }
+
+    public List<SketchBoard> getSketchBoards(long groupId, int start,
+                                                        int end) {
+        return sketchBoardLocalService.getSketchBoards(groupId, start, end);
+    }
+
+    public int getSketchBoardsCount(long groupId) {
+
+        return sketchBoardLocalService.getSketchBoardsCount(groupId);
+    }
 }
+
