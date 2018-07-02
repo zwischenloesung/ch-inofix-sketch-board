@@ -9,7 +9,6 @@
     SketchBoardService sketchBoardService = SketchBoardServiceUtil.getService();
     if (sketchBoardId > 0) {
 
-        %><h1>sketchBoardId = <%=sketchBoardId%><%
         sketchBoard = sketchBoardService.getSketchBoard(sketchBoardId);
     }
 
