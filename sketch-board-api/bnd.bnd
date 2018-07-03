@@ -1,0 +1,9 @@
+Bundle-Name: sketch-board-api
+Bundle-SymbolicName: ch.inofix.sketchboard.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	ch.inofix.sketchboard.exception,\
+	ch.inofix.sketchboard.model,\
+	ch.inofix.sketchboard.service,\
+	ch.inofix.sketchboard.service.persistence
+-includeresource: META-INF/service.xml=../sketch-board-service/service.xml

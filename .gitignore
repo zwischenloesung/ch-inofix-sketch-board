@@ -1,9 +1,13 @@
 .settings/
 .project
 .classpath
+CLASSES
+CLASSPATH
 .gradle/
 bin/
 build/
 node_modules/
 package-lock.json
 .*.swp
+target/
+.sass-cache

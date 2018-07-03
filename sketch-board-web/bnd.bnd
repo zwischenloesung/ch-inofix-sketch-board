@@ -3,3 +3,4 @@ Bundle-SymbolicName: ch.inofix.sketchboard
 Bundle-Version: 1.0.0
 Web-ContextPath: /sketch-board-web
 Export-Package: ch.inofix.sketchboard.constants
+-metatype: *

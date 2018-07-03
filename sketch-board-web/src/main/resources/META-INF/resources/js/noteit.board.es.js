@@ -273,21 +273,29 @@ export class Adhesive {
         textnode.text("");
 //        d.on("click", function() { d.node().focus();});
 //TODO: I'd prefer "focus/blur" here. Collision with "drag"?
-        d.on("blur", function() {
+        var n = this;
+        d.on("blur", function () {
+            n.setMultilineText(textnode, position, d.node().value, foreign);
+        });
+    }
 
-            textnode.text("");
-            let tt = d.node().value;
-            tt = tt.replace(/\r\n/g, "\n").split("\n");
-            for (let i = 0; i < tt.length; i++) {
+    setMultilineText(textnode, position, text, foreign) {
+
+        textnode.text("");
+        if (typeof foreign === 'undefined') {
+            text = text.split("<br/>");
+        } else {
+            text = text.replace(/\r\n/g, "\n").split("\n");
+            foreign.remove();
+        }
+        for (let i = 0; i < text.length; i++) {
 
                 // calc the distance from to for the next tspan
                 let tY = i + position[1] + 1;
                 let tI = textnode.append("tspan")
                             .attr("x", "8px").attr("y", tY + "em");
-                tI.text(tt[i]);
-            }
-            foreign.remove();
-         });
+                tI.text(text[i]);
+        }
     }
 
     addHandles(handles) {
@@ -583,10 +591,10 @@ export class NoteIt extends Adhesive {
             this.addType(type);
         }
         if (typeof title === 'string') {
-            this.addTitle();
+            this.addTitle(title);
         }
         if (typeof content === 'string') {
-            this.addContent();
+            this.addContent(content);
         }
         this.addHandles(handles);
     }
@@ -671,8 +679,8 @@ export class NoteIt extends Adhesive {
 //                    .attr("width", l / 2 + "em").attr("height", h + "em");
         var nt = this.content.append("text")
                     .attr("width", l + "em").attr("height", h + "em")
-                    .attr("x", "0.5em").attr("y", "3em")
-                    .text(content);
+                    .attr("x", "0.5em").attr("y", "3em");
+        this.setMultilineText(nt, [0.5,2], content);
 //        var n = this;
         // add the event to both nodes, as sometimes the text is small,
         // sometimes big...
