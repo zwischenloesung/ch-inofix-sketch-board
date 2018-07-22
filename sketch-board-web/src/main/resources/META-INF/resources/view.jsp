@@ -25,9 +25,8 @@
         setup = sketchBoard.getSetup();
     }
 
-    String[] buttonSwitchTo = new String[2];
-    buttonSwitchTo[0] = LanguageUtil.get(request, "button-switch-to-backend");
-    buttonSwitchTo[1] = LanguageUtil.get(request, "button-switch-to-frontend");
+    String buttonSwitchToPersist = LanguageUtil.get(request, "button-switch-to-backend");
+    String buttonSwitchToDisplay = LanguageUtil.get(request, "button-switch-to-frontend");
 %>
 <portlet:actionURL name="addSketchBoard" var="addSketchBoardURL"></portlet:actionURL>
 
@@ -36,7 +35,6 @@
 </portlet:renderURL>
 
 <div id="<portlet:namespace />-all" width="100%" height="2000px">
-    <div id="<portlet:namespace />-button">
 <%--
         <aui:button-row>
             <button id="<portlet:namespace />-save-board-button" class="btn btn-default" type="button">Save Board</button>
@@ -45,16 +43,7 @@
             <button id="<portlet:namespace />-clear-board-button" class="btn btn-default" type="button">New Board</button>
         </aui:button-row>
 --%>
-        <aui:button-row>
-            <button
-                id="<portlet:namespace />-svg-json-button"
-                class="btn btn-default"
-                type="button">
-                    <%=buttonSwitchTo[0]%>
-            </button>
-        </aui:button-row>
     </div>
-    <hr/>
     <div id="<portlet:namespace />-persist">
         <aui:form
             action="<%= addSketchBoardURL %>"
@@ -73,16 +62,33 @@
                     type="textarea" value="<%=setup%>"></aui:input>
             </aui:fieldset>
             <aui:button-row>
+                <button id="<portlet:namespace />-json-svg-button"
+                    class="btn btn-default" type="button">
+                    <%=buttonSwitchToDisplay%>
+                </button>
                 <aui:button type="submit"></aui:button>
+                <button id="<portlet:namespace />-cancel-button"
+                    class="btn btn-cancel" type="button" onclick="reset(); location.reload();">
+                    <liferay-ui:message key="cancel" />
+                </button>
             </aui:button-row>
         </aui:form>
     </div>
 
     <div id="<portlet:namespace />-board" class="board">
+        <aui:button-row>
+            <button
+                id="<portlet:namespace />-svg-json-button"
+                class="btn btn-default"
+                type="button">
+                    <%=buttonSwitchToPersist%>
+            </button>
+        </aui:button-row>
+        <hr />
         <svg id="<portlet:namespace />-mainSVG" width="100%" height="2000px"></svg>
     </div>
 </div>
 <aui:script require="sketch-board-web@1.0.0">
-    sketchBoardWeb100.default('<portlet:namespace />', '<%=setup.replaceAll("\n", "")%>', ['<%=buttonSwitchTo[0]%>','<%=buttonSwitchTo[1]%>']);
+    sketchBoardWeb100.default('<portlet:namespace />', '<%=setup.replaceAll("\n", "")%>');
 </aui:script>
 
