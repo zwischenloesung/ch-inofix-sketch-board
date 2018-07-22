@@ -24,9 +24,6 @@
         configuration = sketchBoard.getConfiguration();
         setup = sketchBoard.getSetup();
     }
-
-    String buttonSwitchToPersist = LanguageUtil.get(request, "button-switch-to-backend");
-    String buttonSwitchToDisplay = LanguageUtil.get(request, "button-switch-to-frontend");
 %>
 <portlet:actionURL name="addSketchBoard" var="addSketchBoardURL"></portlet:actionURL>
 
@@ -64,7 +61,11 @@
             <aui:button-row>
                 <button id="<portlet:namespace />-json-svg-button"
                     class="btn btn-default" type="button">
-                    <%=buttonSwitchToDisplay%>
+                    <liferay-ui:message key="button-switch-to-frontend" />
+                </button>
+                <button id="<portlet:namespace />-cancel-button"
+                    class="btn btn-cancel" type="button" onclick="reset()">
+                    <liferay-ui:message key="button-reset" />
                 </button>
                 <aui:button type="submit"></aui:button>
                 <button id="<portlet:namespace />-cancel-button"
@@ -81,7 +82,7 @@
                 id="<portlet:namespace />-svg-json-button"
                 class="btn btn-default"
                 type="button">
-                    <%=buttonSwitchToPersist%>
+                    <liferay-ui:message key="button-switch-to-backend" />
             </button>
         </aui:button-row>
         <hr />
