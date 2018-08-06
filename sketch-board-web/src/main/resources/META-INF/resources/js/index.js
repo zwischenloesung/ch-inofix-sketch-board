@@ -1,10 +1,12 @@
 import * as d3 from 'd3/dist/d3';
 
 export default function(portletNamespace, json) {
-    Liferay.Loader.require('sketch-board-web@1.0.0/js/noteit.board.es', function (noteit) {
+    Liferay.Loader.require('sketch-board-web@1.0.0/js/noteit.board.es',
+                function (noteit) {
 
         function createBoard(json) {
-            board = new noteit.SketchBoard(`#${portletNamespace}-mainSVG`);
+            board = new noteit.SketchBoard(`#${portletNamespace}-mainSVG`,
+                    undefined, undefined, false, gallery);
             let s = new noteit.Stack(board, board.group,
                         "Type", ["#f7ff72", "#ff6ee2", "#6ee0ff"], [14,14]);
             if (typeof json !== 'undefined' && json.length > 3 ) {
@@ -12,6 +14,7 @@ export default function(portletNamespace, json) {
             }
         }
 
+        var gallery = new noteit.Gallery([], false);
         var board;
         createBoard(json);
 
@@ -36,7 +39,7 @@ export default function(portletNamespace, json) {
             let t = board.toJSON("  ");
             board.group.remove();
             board = null;
-            store.attr("value", t);
+            store.property("value", t);
             store.text(t);
         });
 

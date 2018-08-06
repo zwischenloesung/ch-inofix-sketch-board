@@ -69,7 +69,7 @@
                 </button>
                 <aui:button type="submit"></aui:button>
                 <button id="<portlet:namespace />-cancel-button"
-                    class="btn btn-cancel" type="button" onclick="reset(); location.reload();">
+                    class="btn btn-cancel" type="button" onclick="reset(); window.location.reload();">
                     <liferay-ui:message key="cancel" />
                 </button>
             </aui:button-row>
